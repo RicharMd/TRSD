@@ -4,12 +4,22 @@ Code for
 
 > **Trust-region Constraints Improves Continual Learning of Self-distillation Fine-tuning**
 
-SDFT ([Shenfeld et al., 2026](https://arxiv.org/abs/2601.19897); [code](https://github.com/Continual-Intelligence/Self-Distillation)) trains the student to match a demonstration-conditioned copy of itself. That teacher is closer to the student than one-hot SFT on average, but the teacher–policy divergence is heavy-tailed, and the tail drives most of the forgetting. TRSD replaces the teacher, sample by sample, with a trust-region projection: the demonstration stays, and the teacher cannot move arbitrarily far from the current policy.
+## Introduction
 
-The same construction is instantiated for three $f$-divergences. Each TRSD run is compared with SDFT under the **same** divergence. In the paper the teacher weight is $\beta$: $\beta = 1$ leaves the demonstration teacher unchanged and recovers SDFT, and $\beta = 0$ is the current policy. The code uses $\tau = 1 - \beta$, so SDFT is `--proximal_teacher_tau 0`.
+Continually adapting large language models to new domains risks erasing capabilities acquired during pretraining. Self-Distillation Fine-Tuning (SDFT; [Shenfeld et al., 2026](https://arxiv.org/abs/2601.19897); [code](https://github.com/Continual-Intelligence/Self-Distillation)) mitigates this problem by using a demonstration-conditioned version of the model as an on-policy teacher. We show, however, that although this teacher is substantially closer to the student than one-hot supervision on average, its teacher–policy divergence remains strongly heavy-tailed across model families and adaptation domains. A controlled down-weighting intervention further shows that high-divergence teachers contribute disproportionately to forgetting. Motivated by this finding, we introduce Trust-Region Constrained Self-Distillation Fine-Tuning (TRSD), which constructs a sample-wise trust-region-constrained teacher distribution that remains faithful to the demonstration-conditioned teacher while limiting its divergence from the current student. Formulated over the f-divergence family, TRSD induces distinct teacher-distribution geometries for forward KL, reverse KL, and squared Hellinger distance without requiring an additional model forward pass beyond SDFT. Across tool use, scientific question answering, and medical reasoning, TRSD improves both task accuracy and instruction-following retention in all comparisons with SDFT. These gains persist under sequential adaptation and broad hyperparameter sweeps. Our results establish teacher calibration as an important principle for continual self-distillation.
+
+![Per-sample target-divergence distributions](figs/target_divergence_qwen.png)
+
+*Per-sample target-divergence distributions for SDFT and SFT on Qwen2.5-7B-Instruct across three domains. Solid curves show Gaussian-smoothed proportions, faint curves show raw bins, and insets magnify the right tails.*
+
+![Effect of down-weighting high-divergence examples](figs/downweight_qwen.png)
+
+*Effect of down-weighting high-divergence examples on Qwen2.5-7B-Instruct. Panels report new-task accuracy and retained IFEval for SFT, SDFT, and high-KL down-weighting (DH-KL) across three domains.*
+
+The same construction is instantiated for three f-divergences. Each TRSD run is compared with SDFT under the **same** divergence. In the paper the teacher weight is beta: beta = 1 leaves the demonstration teacher unchanged and recovers SDFT, and beta = 0 is the current policy. The code uses tau = 1 - beta, so SDFT is `--proximal_teacher_tau 0`.
 
 
-| Paper             | SDFT ($\beta = 1$, $\tau = 0$)                                                                | TRSD                                                                                                                    |
+| Paper             | SDFT (beta = 1, tau = 0)                                                                      | TRSD                                                                                                                    |
 | ----------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | Forward KL        | `--alpha 0 --proximal_teacher_tau 0`                                                          | `--online_sample_tau_mode budget_log_ratio_var_relative`                                                                |
 | Reverse KL        | `--alpha 1 --proximal_teacher_tau 0`                                                          | `--alpha 1 --online_sample_tau_mode budget_chi2_relative`                                                               |
