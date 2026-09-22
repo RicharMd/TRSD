@@ -6,10 +6,10 @@ Code for
 
 SDFT ([Shenfeld et al., 2026](https://arxiv.org/abs/2601.19897); [code](https://github.com/Continual-Intelligence/Self-Distillation)) trains the student to match a demonstration-conditioned copy of itself. That teacher is closer to the student than one-hot SFT on average, but the teacher–policy divergence is heavy-tailed, and the tail drives most of the forgetting. TRSD replaces the teacher, sample by sample, with a trust-region projection: the demonstration stays, and the teacher cannot move arbitrarily far from the current policy.
 
-The same construction is instantiated for three f-divergences. Each TRSD run is compared with SDFT under the **same** divergence (\tau=0, no trust region).
+The same construction is instantiated for three $f$-divergences. Each TRSD run is compared with SDFT under the **same** divergence ($\tau=0$, no trust region).
 
 
-| Paper             | SDFT (\tau=0)                                                                                 | TRSD                                                                                                                    |
+| Paper             | SDFT ($\tau=0$)                                                                               | TRSD                                                                                                                    |
 | ----------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | Forward KL        | `--alpha 0 --proximal_teacher_tau 0`                                                          | `--online_sample_tau_mode budget_log_ratio_var_relative`                                                                |
 | Reverse KL        | `--alpha 1 --proximal_teacher_tau 0`                                                          | `--alpha 1 --online_sample_tau_mode budget_chi2_relative`                                                               |
