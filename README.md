@@ -104,11 +104,11 @@ Files are `scripts/single/{qwen,internlm}_{tooluse,science,medical}_{sft,dft}.sh
 ## Citation
 
 ```bibtex
-@inproceedings{trsd2027,
-  title     = {Trust-region Constraints Improves Continual Learning of Self-distillation Fine-tuning},
-  author    = {Anonymous},
-  booktitle = {ICLR},
-  year      = {2027}
+@misc{trsd,
+  title  = {Trust-region Constraints Improves Continual Learning of Self-distillation Fine-tuning},
+  author = {Anonymous},
+  year   = {2026},
+  note   = {Preprint}
 }
 
 @article{sdft,
