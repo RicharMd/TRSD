@@ -1,0 +1,62 @@
+[
+  {
+    "template_id": 0,
+    "name": "generated_1",
+    "strategy": "Analytical persona with the question placed at the very end.",
+    "text": "Given the reference response, analyze and explain the underlying logic used to generate the following example: $orig_content. $output_text\n\nNow answer with a response of your own, including the thinking process."
+  },
+  {
+    "template_id": 1,
+    "name": "generated_2",
+    "strategy": "Strict adherence with the output format, emphasizing rigid compliance.",
+    "text": "Please provide a response in the same format and style as the provided reference response: $output_text. For $orig_content."
+  },
+  {
+    "template_id": 2,
+    "name": "generated_3",
+    "strategy": "Encouraging/soft persona, placing the question at the beginning.",
+    "text": "Let's consider the following example and response: $orig_content. $output_text. Now, let's try to explain how this was achieved.\n\nNow answer with a response of your own, including the thinking process."
+  },
+  {
+    "template_id": 3,
+    "name": "generated_4",
+    "strategy": "Analytical persona with a concluding example.",
+    "text": "Now, analyze the following example and reference response: $output_text. For the question: $orig_content.\n\nNow answer with a response of your own, including the thinking process."
+  },
+  {
+    "template_id": 4,
+    "name": "generated_5",
+    "strategy": "Encouraging/soft persona, placing the question in the middle.",
+    "text": "Let's take a look at the following example and response: $orig_content. The reference response is: $output_text. Let's see how it can be done.\n\nNow answer with a response of your own, including the thinking process."
+  },
+  {
+    "template_id": 5,
+    "name": "generated_6",
+    "strategy": "Strict adherence with the output format, emphasizing rigid compliance.",
+    "text": "Provide a response in the same format and style as the provided reference response for the question: $orig_content. $output_text"
+  },
+  {
+    "template_id": 6,
+    "name": "generated_7",
+    "strategy": "Encouraging/soft persona, placing the question at the beginning with a context setup.",
+    "text": "Given the question: $orig_content, let's review the following example and response: $output_text. Now, let's try to replicate it.\n\nNow answer with a response of your own, including the thinking process."
+  },
+  {
+    "template_id": 7,
+    "name": "generated_8",
+    "strategy": "Analytical persona with a concluding example and a call to action.",
+    "text": "Analyze the following example and response: $output_text. The question is: $orig_content. Try to replicate the same response.\n\nNow answer with a response of your own, including the thinking process."
+  },
+  {
+    "template_id": 8,
+    "name": "baseline",
+    "strategy": "Current tooluse teacher wrapper: question, demo block, then answer instruction.",
+    "text": "$orig_content\n\nThis is an example for a response to the question:\n$output_text\n\nNow answer with a response of your own, including the thinking process."
+  },
+  {
+    "template_id": 9,
+    "name": "qdq_demo_first",
+    "strategy": "From main_qdq.py: demo-first for a similar tool-use question, then answer the target question last.",
+    "text": "This is an example for a response to a similar tool-use question:\n$output_text\n\nNow answer the following question with a response of your own, including the thinking process:\n\n$orig_content"
+  }
+]

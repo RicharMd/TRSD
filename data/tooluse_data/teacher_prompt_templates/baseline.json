@@ -1,0 +1,8 @@
+[
+  {
+    "template_id": 0,
+    "name": "baseline",
+    "strategy": "Current tooluse teacher wrapper: question, demo block, then answer instruction.",
+    "text": "$orig_content\n\nThis is an example for a response to the question:\n$output_text\n\nNow answer with a response of your own, including the thinking process."
+  }
+]

@@ -1,0 +1,38 @@
+You are an expert in Large Language Model (LLM) alignment, prompt engineering, and knowledge distillation.
+
+### Context & Goal
+We are implementing a Self-Distillation framework.
+- The Student model only receives the raw question: `$orig_content`.
+- The Teacher model receives a prompt template that contains both the raw question (`$orig_content`) and a high-quality reference response (`$output_text`) to guide its output distribution.
+
+We want to optimize the "wrapper" text around these two variables to find the optimal prompt that minimizes the KL-divergence between the Teacher and a baseline target.
+
+### Your Task
+Generate 8 distinct, highly professional English prompt templates for the Teacher model.
+
+### Critical Constraint
+Every template MUST preserve the exact placeholders: `$orig_content` and `$output_text`. Do not modify them.
+
+### Design Variations to Explore
+Please maximize the diversity of the templates by varying these two dimensions:
+
+1. **Layout & Positioning:** Freely experiment with the placement of the placeholders.
+   - E.g., placing `$orig_content` at the beginning, in the middle, or at the very end.
+   - E.g., placing `$output_text` as a prefix context or as a concluding example.
+2. **Pedagogical Persona:**
+   - **Analytical:** Force the teacher to dissect the underlying logic of the reference.
+   - **Strict Adherence:** Emphasize rigid compliance with the format and style of the reference.
+   - **Encouraging/Soft:** Use a relaxed, advisory tone to reduce the rigidity of the output distribution.
+
+### Expected Output Format
+Please output ONLY pure text. Separate each of the 8 variants clearly using the delimiter `=== TEMPLATE X ===`, and provide a 1-sentence description of the strategy used before the actual template text.
+
+Example format:
+
+=== TEMPLATE 1 ===
+Strategy: Analytical persona with the question placed at the very end.
+
+[Your raw text containing $orig_content and $output_text here]
+
+=== TEMPLATE 2 ===
+Strategy: ...

@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+outputs/
+wandb/
+*.log
+cache-*.arrow
+.DS_Store

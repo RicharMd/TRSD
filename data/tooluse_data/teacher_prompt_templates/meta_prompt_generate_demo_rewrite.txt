@@ -1,0 +1,35 @@
+Rewrite the tool-use demonstration below into a clearer example response.
+
+Your job is to **re-describe the demo only** — do NOT rewrite the user question, tool docs, or any wrapper text. Another template will insert this demo next to the original question later.
+
+### Source demonstration
+<demo>
+$golden_demo
+</demo>
+
+Style hint: $style_hint
+
+Must keep unchanged (correctness):
+- Every Action: line and tool name exactly
+- Every Action Input: JSON payload exactly (same keys, values, URLs)
+- Exactly one Action / Action Input pair unless the source has more
+- The format: Thought / Action / Action Input
+- The format MUST include a line starting with "Thought:" before Action:
+
+May change freely:
+- Thought wording (make the reasoning clearer or more explicit)
+- A one-sentence intro before Thought (e.g. "Example solution:")
+- Line breaks and minor formatting
+
+Do NOT:
+- Invent extra Action steps or tools
+- Copy or rewrite the long user question / tool documentation
+- Add placeholders
+
+Write in English.
+
+Output exactly:
+
+=== DEMO REWRITE ===
+Strategy: <one short sentence>
+<rewritten demo on the following lines>

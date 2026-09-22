@@ -1,0 +1,38 @@
+Rewrite the inputs below into one user message for a tool-use agent.
+
+Your job is to **rephrase and reorganize** — not just add a short wrapper. You may change section titles, intro wording, demo framing, and order. Keep the same task meaning and the same correct tool call.
+
+Style:
+- Layout: $layout_hint
+- Tone: $persona_hint
+
+### Source question
+<question>
+$student_question
+</question>
+
+### Source demonstration (one example solution)
+<demo>
+$golden_demo
+</demo>
+
+Must keep unchanged (correctness):
+- Tool names in the demo Action line(s)
+- Action Input JSON exactly as given
+- URLs and factual details in the user question
+- The tool-use response format: Thought / Action / Action Input
+
+May change freely:
+- Wrapper text, section headers, intro/outro wording
+- Order of question vs demo
+- Thought wording in the demo (but keep one Thought/Action/Action Input block, do not invent extra Action steps)
+
+End with a short line asking the agent to answer with the thinking process.
+
+Do not use placeholders. Write in English.
+
+Output exactly:
+
+=== TEACHER PROMPT ===
+Strategy: <one short sentence on layout/tone>
+<your complete user message on the following lines>
